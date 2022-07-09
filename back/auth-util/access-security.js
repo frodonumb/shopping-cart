@@ -3,12 +3,14 @@ const User = require('../domain/user');
 
 exports.checkSession = (req, res, next) => {
 
-    if (!req.headers.session) {
+    if (!req.headers.authorization) {
         res.status(401).json({ message: 'Unauthorized' });
         return;
     }
 
-    if (!sessionRepository.getSession(req.headers.session)) {
+    const username = getUserNameFromSession(req);
+
+    if (!User.getUserByName(username)) {
         res.status(401).json({ message: 'Unauthorized' });
         return;
     }
@@ -17,6 +19,10 @@ exports.checkSession = (req, res, next) => {
 }
 
 exports.getUserBySession = (req) => {
-    const session = sessionRepository.getSession(req.headers.session);
-    return User.getUserByName(session.session.split(':')[0]);  
+    const username = getUserNameFromSession(req);
+    return User.getUserByName(username);
+}
+
+function getUserNameFromSession(req) {
+    return req.headers.authorization.replace('Bearer ', '').split(':').shift();
 }

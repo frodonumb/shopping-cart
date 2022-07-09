@@ -17,6 +17,14 @@ const Product = class Product {
     static getById(id) {
         return db.find(product => product.id == id);
     }
+
+    increaseStockQuantity() {
+        this.stock++;
+    }
+
+    decreaseStockQuantity() {
+        this.stock--;
+    }
 }
 
 db.push(new Product(1, 'Apple juice', 2.99, '', 8));

@@ -8,12 +8,7 @@ const User = class User {
     }
 
     static getUserByName(username) {
-        const index = db.findIndex(user => user.username === username);
-        if (index >= 0) {
-            return db[index];
-        } else {
-            throw Error('User not found');
-        }
+        return db.find(user => user.username === username);
     }
 }
 

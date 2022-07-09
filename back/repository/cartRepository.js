@@ -32,14 +32,14 @@ exports.addProduct = (user, product) => {
 }
 
 
-exports.increaseQuantity = (user, cartItem) => {
+exports.increaseQuantity = (user, product) => {
     let cart = carts.find(item => item.user.username === user.username);
 
     if (!cart) {
         throw Error('Cart not found');
     }
 
-    const index = cart.cartItems.findIndex(item => item.product.id == cartItem.product.id);
+    const index = cart.cartItems.findIndex(item => item.product.id == product.id);
 
     if (index >= 0) {
         cart.cartItems[index].quantity++;
@@ -49,14 +49,14 @@ exports.increaseQuantity = (user, cartItem) => {
 
 }
 
-exports.decreaseQuantity = (user, cartItem) => {
+exports.decreaseQuantity = (user, product) => {
     let cart = carts.find(item => item.user.username === user.username);
 
     if (!cart) {
         throw Error('Cart not found');
     }
 
-    const index = cart.cartItems.findIndex(item => item.product.id == cartItem.product.id);
+    const index = cart.cartItems.findIndex(item => item.product.id == product.id);
 
     if (index >= 0) {
         cart.cartItems[index].quantity--;
