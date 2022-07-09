@@ -1,6 +1,8 @@
-exports.userReplacer = (key, value) => {
+exports.cartInfoReplacer = (key, value) => {
     switch (key) {
         case 'user':
+        case 'img':
+        case 'stock':
             return undefined;
         default:
             return value;

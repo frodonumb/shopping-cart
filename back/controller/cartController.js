@@ -9,7 +9,7 @@ exports.getCart = (req, res) => {
     const cart = repository.getCart(user);
 
     if (cart) {
-        res.json(jsonReplacer.repace(cart, jsonReplacer.userReplacer));
+        res.json(jsonReplacer.repace(cart, jsonReplacer.cartInfoReplacer));
     } else {
         res.json({});
     }
