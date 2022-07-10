@@ -16,6 +16,8 @@ const port = process.env.PORT || 3000;
 
 
 app.use('/auth', authRouter);
+app.use(express.static('res'));
+app.use('/images', express.static('images'));
 
 app.use('/products', checkSession, productRouter);
 app.use('/shopping-cart', checkSession, cartRouter);

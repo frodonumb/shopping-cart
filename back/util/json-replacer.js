@@ -9,6 +9,6 @@ exports.cartInfoReplacer = (key, value) => {
     }
 }
 
-exports.repace = (obj, replacer) => {
+exports.replace = (obj, replacer) => {
     return JSON.parse(JSON.stringify(obj, replacer));
 }

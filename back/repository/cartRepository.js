@@ -39,10 +39,12 @@ exports.increaseQuantity = (user, product) => {
         throw Error('Cart not found');
     }
 
-    const index = cart.cartItems.findIndex(item => item.product.id == product.id);
+    const cartItem = cart.cartItems.find(item => item.product.id == product.id);
 
-    if (index >= 0) {
-        cart.cartItems[index].quantity++;
+    if (cartItem) {
+        cartItem.quantity++;
+        exports.calculateCartItemTotalPrice(cartItem);
+        return cartItem;
     } else {
         throw Error('No cart item found');
     }
@@ -60,7 +62,7 @@ exports.decreaseQuantity = (user, product) => {
 
     if (index >= 0) {
         cart.cartItems[index].quantity--;
-
+        exports.calculateCartItemTotalPrice(cart.cartItems[index]);
         if (cart.cartItems[index].quantity <= 0) {
             cart.cartItems.splice(index, 1);
         }
@@ -68,4 +70,12 @@ exports.decreaseQuantity = (user, product) => {
         throw Error('No cart item found');
     }
 
+}
+
+exports.calculateCartItemTotalPrice = (cartItem) => {
+    cartItem.totalPrice = parseFloat((cartItem.product.price * cartItem.quantity).toFixed(2));
+}
+
+exports.calculateCartTotalPrice = (cart) => {
+    cart.totalPrice = cart.cartItems.reduce((prev, next) => prev + next.totalPrice, 0);
 }
