@@ -65,7 +65,9 @@ exports.decreaseQuantity = (user, product) => {
         exports.calculateCartItemTotalPrice(cart.cartItems[index]);
         if (cart.cartItems[index].quantity <= 0) {
             cart.cartItems.splice(index, 1);
+            return {};
         }
+        return cart.cartItems[index];
     } else {
         throw Error('No cart item found');
     }
@@ -77,5 +79,14 @@ exports.calculateCartItemTotalPrice = (cartItem) => {
 }
 
 exports.calculateCartTotalPrice = (cart) => {
-    cart.totalPrice = cart.cartItems.reduce((prev, next) => prev + next.totalPrice, 0);
+    cart.totalPrice = parseFloat(cart.cartItems.reduce((prev, next) => prev + next.totalPrice, 0).toFixed(2));
+}
+
+exports.placeOrder = (user) => {
+    const index = carts.findIndex(item => item.user.username == user.username);
+
+    if (index >= 0) {
+        carts.splice(index, 1);
+    }
+
 }

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <script src="./public/js/bootstrap.min.js"></script>
+    <script src="./public/js/index.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <nav class="navbar bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand">Shopping-cart</a>
+                <form class="d-flex" role="search" id="loginContainer">
+                    <input class="form-control me-2" type="text" placeholder="username" aria-label="username"
+                        id="usernameInput">
+                    <input class="form-control me-2" type="password" placeholder="password" aria-label="password"
+                        id="passwordInput">
+                    <button class="btn btn-outline-dark" type="submit" id="loginBtn">Login</button>
+                </form>
+
+                <div class="d-flex" id="logoutContainer">
+                    <a class="navbar-brand" id="welcomeLabel"></a>
+                    <button class="btn btn-outline-dark" type="submit" id="logoutBtn">Logout</button>
+                </div>
+            </div>
+        </nav>
+
+        <div id="unAuthorizedContainer">
+            <h1 class="display-4">Welcome to my store</h1>
+        </div>
+
+        <div id="authorizedContainer">
+
+            <h1 class="display-4">Product list</h1>
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="productTableBody">
+                </tbody>
+
+            </table>
+
+            <h1 class="display-4">Your shopping cart</h1>
+
+            <h1 class="display-6" id="noCartTitle" style="visibility:visible;">There is no item in your shopping cart!
+            </h1>
+
+            <table class="table table-hover" id="cartTable" style="visibility: hidden;">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Quantity</th>
+                    </tr>
+                </thead>
+                <tbody id="cartTableBody">
+
+                </tbody>
+
+            </table>
+
+            <div class="text-end">
+                <button class="btn btn-outline-dark" id="placeOrderBtn" style="display: none;">Place Order</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Methods</h4>
+                </div>
+                <div class="modal-body">
+                    <p>The <strong>show</strong> method shows the modal and the <strong>hide</strong> method hides the
+                        modal.</p>
+
+                    <!-- Trigger the modal with a button -->
+                    <button type="button" class="btn btn-info btn-md" id="modelBtn">Hide Modal</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

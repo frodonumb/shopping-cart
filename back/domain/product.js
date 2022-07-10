@@ -17,6 +17,10 @@ const Product = class Product {
     static getById(id) {
         return db.find(product => product.id == id);
     }
+
+    updateStockQuantity(quantity) {
+        this.stock -= quantity;
+    }
 }
 
 const dir_images = '/images/';
