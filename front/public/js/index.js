@@ -110,7 +110,7 @@ async function loadProducts() {
 
     const response = await fetch(`${baseUrl}/products/`, {
         headers: {
-            'authorization': 'tina:329837487473'
+            'authorization': sessionStorage.getItem('sessionToken')
         }
     });
     const products = await response.json();
@@ -139,7 +139,7 @@ async function loadProducts() {
 async function loadCartItems() {
     const response = await fetch(`${baseUrl}/shopping-cart`, {
         headers: {
-            'authorization': 'tina:329837487473'
+            'authorization': sessionStorage.getItem('sessionToken')
         }
     });
 
@@ -165,7 +165,7 @@ async function increaseQuantity(productId) {
     const response = await fetch(`${baseUrl}/shopping-cart/cart-item/${productId}/increase-quantity`, {
         method: 'PATCH',
         headers: {
-            'authorization': 'tina:329837487473'
+            'authorization': sessionStorage.getItem('sessionToken')
         }
     });
 
@@ -187,7 +187,7 @@ async function decreaseQuantity(productId) {
     const response = await fetch(`${baseUrl}/shopping-cart/cart-item/${productId}/decrease-quantity`, {
         method: 'PATCH',
         headers: {
-            'authorization': 'tina:329837487473'
+            'authorization': sessionStorage.getItem('sessionToken')
         }
     });
 
@@ -220,7 +220,7 @@ async function addProduct(productId) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'authorization': 'tina:329837487473'
+            'authorization': sessionStorage.getItem('sessionToken')
         },
         body: JSON.stringify({ productId: productId })
     });
@@ -270,7 +270,7 @@ function createCartItemRow(item) {
 async function updateCartTotalPrice(addRow) {
     const response = await fetch(`${baseUrl}/shopping-cart`, {
         headers: {
-            'authorization': 'tina:329837487473'
+            'authorization': sessionStorage.getItem('sessionToken')
         }
     });
 
@@ -314,7 +314,7 @@ async function placeOrder(event) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'authorization': 'tina:329837487473'
+            'authorization': sessionStorage.getItem('sessionToken')
         }
     });
 
