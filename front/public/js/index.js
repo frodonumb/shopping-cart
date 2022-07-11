@@ -18,7 +18,7 @@ async function initPage() {
     showAuthorizedContainer();
     loadProducts();
     loadCartItems();
-    document.getElementById('welcomeLabel').value = sessionStorage.getItem('username');
+    document.getElementById('welcomeLabel').innerHTML = `Welcome, ${sessionStorage.getItem('username')}`;
     document.getElementById('placeOrderBtn').onclick = placeOrder;
 }
 
