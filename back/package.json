@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "PORT=8081 NODE_ENV=development nodemon application.js"
+    "start": "nodemon application.js"
   },
   "keywords": [],
   "author": "",
