@@ -21,6 +21,9 @@ app.use('/images', express.static('images'));
 
 app.use('/products', checkSession, productRouter);
 app.use('/shopping-cart', checkSession, cartRouter);
+app.use('/', function(req, res){
+    res.json({message: 'Updated'});
+})
 app.use((req, res) => {
     res.status(404).send();
 });
