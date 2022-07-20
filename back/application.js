@@ -24,6 +24,9 @@ app.use('/shopping-cart', checkSession, cartRouter);
 app.use('/', function(req, res){
     res.json({message: 'Updated'});
 })
+app.use('/test', function(req, res){
+    res.json({message: 'Test'});
+})
 app.use((req, res) => {
     res.status(404).send();
 });
